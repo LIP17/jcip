@@ -15,6 +15,12 @@
             <version>3.0.1</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>jcip</groupId>
+            <artifactId>jcip-annotations</artifactId>
+            <scope>system</scope>
+            <systemPath>${basedir}/src/main/resources/jcip-annotations.jar</systemPath>
+        </dependency>
     </dependencies>
 
     <build>
