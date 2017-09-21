@@ -7,6 +7,9 @@ public class ThisEscape {
 
     private final int cnt;
 
+    /**
+     * Do not allow the `this` ref to escape during construction
+     * */
     public ThisEscape(EventSource source) {
         source.registerListener(
                 /**
