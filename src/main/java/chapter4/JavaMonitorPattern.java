@@ -12,7 +12,7 @@ public interface JavaMonitorPattern {
 
 }
 
-class IntrinsicLock<T> implements JavaMonitorPattern {
+class IntrinsicLockImplementation<T> implements JavaMonitorPattern {
     @GuardedBy("this")
     private final Set<T> set = new HashSet<T>();
 
@@ -25,7 +25,7 @@ class IntrinsicLock<T> implements JavaMonitorPattern {
  * The benefit of using private lock is, other object access this will
  * never get the intrinsic lock, in case client code doing something bad.
  * */
-class PrivateLock implements JavaMonitorPattern {
+class PrivateLockImplementation implements JavaMonitorPattern {
     private final Object internalLock = new Object();
 
     @GuardedBy("this")
