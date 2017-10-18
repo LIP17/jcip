@@ -1,5 +1,7 @@
 package chapter5;
 
+import net.jcip.annotations.ThreadSafe;
+
 import java.lang.reflect.Executable;
 import java.util.Comparator;
 import java.util.Queue;
@@ -8,9 +10,6 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.PriorityBlockingQueue;
 import java.util.concurrent.SynchronousQueue;
 
-/**
- * Created by lip on 10/16/17.
- */
 public class BlockingQueueTest {
 
     public static void main(String[] args) {
@@ -26,7 +25,9 @@ public class BlockingQueueTest {
             // offer wont block, and will return boolean on whether the capacity limit is broken when insert this element.
             blockingQueue.offer(1);
         } catch (InterruptedException e) {
-
+            // Listing 5.10: you have to do something with the interrupt, do never ignore the
+            // interrupted exception
+            Thread.currentThread().interrupt();
         }
 
         BlockingQueue<Integer> pqBlockingQueue = new PriorityBlockingQueue<>(10, new Comparator<Integer>() {
@@ -42,7 +43,7 @@ public class BlockingQueueTest {
             assert(pqBlockingQueue.take() == 1);
 
         } catch (InterruptedException e) {
-
+            Thread.currentThread().interrupt();
         }
 
         BlockingQueue<Integer> sq = new SynchronousQueue<>();
@@ -53,9 +54,8 @@ public class BlockingQueueTest {
             // this program it will block forever.
             sq.put(1);
         } catch (Exception e) {
-
+            Thread.currentThread().interrupt();
         }
-
     }
 
 }

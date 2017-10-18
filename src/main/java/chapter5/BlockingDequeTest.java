@@ -15,7 +15,7 @@ public class BlockingDequeTest {
             bdq.takeFirst();
             bdq.takeLast();
         } catch (InterruptedException e) {
-
+            Thread.currentThread().interrupt();
         }
     }
 
