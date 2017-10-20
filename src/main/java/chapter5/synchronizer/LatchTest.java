@@ -7,6 +7,8 @@ public class LatchTest {
     /**
      * Latch act as a gate, until latch reaches the terminal state, all thread will be waiting
      * and no threads will pass. After the gate is open it cannot be changed again.
+     *
+     * Latch is used for waiting event count, if you want wait all threads, use barrier.
      * */
 
     private void usePattern() {
