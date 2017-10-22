@@ -43,11 +43,11 @@ public class FutureTest {
             }
         });
 
-    Thread t = new Thread(future);
+//    Thread t = new Thread(future);
 
-    public void start() {
-        t.start();
-    }
+//    public void start() {
+//        t.start();
+//    }
 
     /**
      * Listing 5.13
@@ -70,7 +70,7 @@ public class FutureTest {
             // when you call future.get, if the state is not DONE,
             // it will be blocked by conditional variable, so you have
             // to submit it to a thread or executor to start it.
-            t.start();
+            future.run();
             return future.get();
         } catch (Exception e) {
             // when you call get, the Callable could throw
