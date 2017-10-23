@@ -24,6 +24,8 @@ public class BlockingQueueTest {
 
             // offer wont block, and will return boolean on whether the capacity limit is broken when insert this element.
             blockingQueue.offer(1);
+            // also, poll wont block like offer, if queue is empty it will return null object
+            blockingQueue.poll();
         } catch (InterruptedException e) {
             // Listing 5.10: you have to do something with the interrupt, do never ignore the
             // interrupted exception
