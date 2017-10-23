@@ -10,7 +10,6 @@ public class BlockingDequeTest {
 
         try {
             bdq.put(1);
-
             // work stealing, if your thread is empty, try steal from other thread!
             bdq.takeFirst();
             bdq.takeLast();
