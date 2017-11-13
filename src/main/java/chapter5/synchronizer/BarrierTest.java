@@ -1,8 +1,5 @@
 package chapter5.synchronizer;
 
-
-import org.omg.PortableServer.THREAD_POLICY_ID;
-
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
@@ -23,13 +20,7 @@ public class BarrierTest {
          * more than once.
          * */
 
-        CyclicBarrier cBarrier = new CyclicBarrier(cpuCount,
-                new Runnable() {
-                    @Override
-                    public void run() {
-                        System.out.println("all threads arrived at barrier");
-                    }
-                });
+        CyclicBarrier cBarrier = new CyclicBarrier(cpuCount, () -> System.out.println("all threads arrived at barrier"));
 
         Thread[] tGroup = new Thread[cpuCount];
         for (int i = 0; i < cpuCount; i++) {
